@@ -7,7 +7,7 @@ $(document).ready(function() {
     $("#answer").hide();
   
     magic8Ball.askQuestion = function(question) {
-      $("#8ball").effect("shake");
+      $("#8ball").effect("bounce");
   
       $("#8ball").attr("src", "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/magic8ballAnswer.png");
   
