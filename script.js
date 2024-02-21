@@ -1,8 +1,9 @@
+
 $(document).ready(function() {
 
     var magic8Ball = {};
-    magic8Ball.listOfAnswers = ["No", "Yes", "I don't think so...", "Of course!", "Indubitably", "In your dreams."
-];
+    magic8Ball.listOfAnswers = ["No", "Yes", "I don't think so...", "Of course!", "Indubitably", "In your dreams."];
+    magic8Ball.cancelAnswers = ["Coward.", "Fine then leave.", "Come back when you're ready.", "Please ask a question."];
   
     $("#answer").hide();
   
@@ -13,13 +14,16 @@ $(document).ready(function() {
   
       $("#answer").fadeIn(4000);
   
-      var randomNumber = Math.random();
-  
-      var randomNumberForListOfAnswers = randomNumber * this.listOfAnswers.length;
-  
-      var randomIndex = Math.floor(randomNumberForListOfAnswers);
-  
-      var answer = this.listOfAnswers[randomIndex];
+      var randomNumber;
+      var answer;
+
+      if (question=== null) {
+        randomNumber= Math.random() * this.cancelAnswers.length;
+        answer = this.cancelAnswers[Math.floor(randomNumber)];
+      } else {
+        randomNumber = Math.random() * this.listOfAnswers.length;
+        answer= this.listOfAnswers[Math.floor(randomNumber)];
+      }
   
       $("#answer").text(answer);
   
@@ -38,10 +42,8 @@ $(document).ready(function() {
         var question = prompt("ASK A YES/NO QUESTION!");
         magic8Ball.askQuestion(question);
       }, 500);
-  
-  
     };
   
     $("#questionButton").click(onClick);
   
-  });
+});
